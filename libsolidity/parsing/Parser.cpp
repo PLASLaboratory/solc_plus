@@ -942,6 +942,13 @@ ASTPointer<Statement> Parser::parseStatement()
 		m_scanner->next();
 		break;
 	}
+/* Eun-Sun Cho 2018.8.30 */
+	case Token::NonFallBack:
+	{
+		statement = ASTNodeFactory(*this).createNode<NonFallBack>(docString);
+		m_scanner->next();
+		break;
+	}
 	case Token::Assembly:
 		return parseInlineAssembly(docString);
 	case Token::Emit:
