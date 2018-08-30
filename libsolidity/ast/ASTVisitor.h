@@ -18,6 +18,10 @@
  * @author Christian <c@ethdev.com>
  * @date 2014
  * AST visitor base class.
+ *
+ * -Modified for NonFallBack 
+ * -by Eun-Sun Cho <eschough@cnu.ac.kr>
+ * -date 2018.8.30
  */
 
 #pragma once

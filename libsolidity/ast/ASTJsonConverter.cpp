@@ -17,6 +17,10 @@
 /**
  * @date 2017
  * Converts the AST into json format
+ *
+ * -Modified for NonFallBack 
+ * -by Eun-Sun Cho <eschough@cnu.ac.kr>
+ * -date 2018.8.30
  */
 
 #include <libsolidity/ast/ASTJsonConverter.h>

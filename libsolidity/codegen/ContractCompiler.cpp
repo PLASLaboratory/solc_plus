@@ -18,6 +18,10 @@
  * @author Christian <c@ethdev.com>
  * @date 2014
  * Solidity compiler.
+ *
+ * -Modified for NonFallBack 
+ * -by Eun-Sun Cho <eschough@cnu.ac.kr>
+ * -date 2018.8.30
  */
 
 #include <libsolidity/codegen/ContractCompiler.h>

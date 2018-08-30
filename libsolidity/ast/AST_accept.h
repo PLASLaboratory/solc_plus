@@ -19,6 +19,10 @@
  * @date 2014
  * Implementation of the accept functions of AST nodes, included by AST.cpp to not clutter that
  * file with these mechanical implementations.
+ *
+ * -Modified for NonFallBack 
+ * -by Eun-Sun Cho <eschough@cnu.ac.kr>
+ * -date 2018.8.30
  */
 
 #pragma once

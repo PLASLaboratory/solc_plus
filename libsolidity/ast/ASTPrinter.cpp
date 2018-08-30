@@ -18,7 +18,12 @@
  * @author Christian <c@ethdev.com>
  * @date 2014
  * Pretty-printer for the abstract syntax tree (the "pretty" is arguable), used for debugging.
+ *
+ * -Modified for NonFallBack 
+ * -by Eun-Sun Cho <eschough@cnu.ac.kr>
+ * -date 2018.8.30
  */
+
 
 #include <libsolidity/ast/ASTPrinter.h>
 #include <libsolidity/ast/AST.h>

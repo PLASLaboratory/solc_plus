@@ -40,6 +40,12 @@
 // You should have received a copy of the GNU General Public License
 // along with solidity.  If not, see <http://www.gnu.org/licenses/>.
 
+/**
+ * -Modified for NonFallBack 
+ * -by Eun-Sun Cho <eschough@cnu.ac.kr>
+ * -date 2018.8.30
+*/
+
 #pragma once
 
 #include <libdevcore/Common.h>
