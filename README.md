@@ -9,5 +9,5 @@ For instace, following codelet will check if any function call in  the call chai
     f();
     ...
 
-
-For details, please contact me.
+We assume the new keyword generates SETNONFALLBACK instruction for the EVM byte code (for 0x25 for the binary code,) which is again a newly introduced instruction.
+For details, please contact us.
