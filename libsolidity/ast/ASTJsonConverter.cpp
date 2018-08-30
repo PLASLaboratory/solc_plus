@@ -72,6 +72,7 @@ void ASTJsonConverter::setJsonNode(
 	{
 		m_currentValue["name"] = _nodeType;
 		Json::Value attrs(Json::objectValue);
+		/* Eun-Sun Cho 2018.8.30 I've done nothing */
 		if (
 			//these nodeTypes need to have a children-node even if it is empty
 			(_nodeType == "VariableDeclaration") ||
@@ -535,6 +536,13 @@ bool ASTJsonConverter::visit(Return const& _node)
 bool ASTJsonConverter::visit(Throw const& _node)
 {
 	setJsonNode(_node, "Throw", {});
+	return false;
+}
+
+/* Eun-Sun Cho 2018.8.30 */
+bool ASTJsonConverter::visit(NonFallBack const& _node)
+{
+	setJsonNode(_node, "NonFallBack", {});
 	return false;
 }
 

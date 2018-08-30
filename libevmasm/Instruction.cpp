@@ -58,6 +58,7 @@ const std::map<std::string, Instruction> dev::solidity::c_instructions =
 	{ "MULMOD", Instruction::MULMOD },
 	{ "SIGNEXTEND", Instruction::SIGNEXTEND },
 	{ "KECCAK256", Instruction::KECCAK256 },
+	{ "SETNONFALLBACK", Instruction::SETNONFALLBACK },	 /* Eun-Sun Cho 2018.8.30 */
 	{ "ADDRESS", Instruction::ADDRESS },
 	{ "BALANCE", Instruction::BALANCE },
 	{ "ORIGIN", Instruction::ORIGIN },
@@ -201,6 +202,8 @@ static const std::map<Instruction, InstructionInfo> c_instructionInfo =
 	{ Instruction::MULMOD,		{ "MULMOD",			0, 3, 1, false, Tier::Mid } },
 	{ Instruction::SIGNEXTEND,	{ "SIGNEXTEND",		0, 2, 1, false, Tier::Low } },
 	{ Instruction::KECCAK256,	{ "KECCAK256",			0, 2, 1, true, Tier::Special } },
+	{ Instruction::SETNONFALLBACK,	{ "SETNONFALLBACK",			0, 0, 0, true, Tier::Zero } }, /* Eun-Sun Cho 2018.8.30 */
+	{ Instruction::ADDRESS,		{ "ADDRESS",		0, 0, 1, false, Tier::Base } },
 	{ Instruction::ADDRESS,		{ "ADDRESS",		0, 0, 1, false, Tier::Base } },
 	{ Instruction::BALANCE,		{ "BALANCE",		0, 1, 1, false, Tier::Balance } },
 	{ Instruction::ORIGIN,		{ "ORIGIN",			0, 0, 1, false, Tier::Base } },

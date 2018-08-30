@@ -157,6 +157,8 @@ public:
 	CompilerContext& appendJump(eth::AssemblyItem::JumpType _jumpType = eth::AssemblyItem::JumpType::Ordinary);
 	/// Appends an INVALID instruction
 	CompilerContext& appendInvalid();
+	/// Appends an SetNonFallBack instruction
+	CompilerContext& appendSetNonFallBack();
 	/// Appends a conditional INVALID instruction
 	CompilerContext& appendConditionalInvalid();
 	/// Appends a REVERT(0, 0) call

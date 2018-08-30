@@ -785,6 +785,14 @@ bool ContractCompiler::visit(Throw const&)
 	return false;
 }
 
+/* Eun-Sun Cho 2018.8.30 */
+bool ContractCompiler::visit(NonFallBack const&)
+{
+	m_context.appendSetNonFallBack();
+
+	return false;
+}
+
 bool ContractCompiler::visit(EmitStatement const& _emit)
 {
 	CompilerContext::LocationSetter locationSetter(m_context, _emit);

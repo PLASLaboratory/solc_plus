@@ -66,6 +66,8 @@ enum class Instruction: uint8_t
 	SAR,				///< bitwise SAR operation
 
 	KECCAK256 = 0x20,		///< compute KECCAK-256 hash
+	
+	SETNONFALLBACK = 0x25,		///< starting nonfallback mode > /*Eun-Sun Cho 2018.8.30*/
 
 	ADDRESS = 0x30,		///< get address of currently executing account
 	BALANCE,			///< get balance of the given account

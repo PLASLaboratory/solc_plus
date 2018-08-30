@@ -539,7 +539,23 @@ void Throw::accept(ASTVisitor& _visitor)
 	_visitor.endVisit(*this);
 }
 
+
 void Throw::accept(ASTConstVisitor& _visitor) const
+{
+	_visitor.visit(*this);
+	_visitor.endVisit(*this);
+}
+
+/*Eun-Sun Cho 2018.8.30 */
+void NonFallBack::accept(ASTVisitor& _visitor)
+{
+	_visitor.visit(*this);
+	_visitor.endVisit(*this);
+}
+
+
+/*Eun-Sun Cho 2018.8.30 */
+void NonFallBack::accept(ASTConstVisitor& _visitor) const
 {
 	_visitor.visit(*this);
 	_visitor.endVisit(*this);

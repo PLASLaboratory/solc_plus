@@ -259,6 +259,14 @@ pair<u256, unsigned> CompilerContext::storageLocationOfVariable(const Declaratio
 	return it->second;
 }
 
+/*Eun-Sun Cho 2018.8.30 */
+CompilerContext& CompilerContext::appendSetNonFallBack()
+{
+//	eth::AssemblyItem item(Instruction::SETNONFALLBACK);
+//	return *this << item;
+	return *this << Instruction::SETNONFALLBACK;
+}
+
 CompilerContext& CompilerContext::appendJump(eth::AssemblyItem::JumpType _jumpType)
 {
 	eth::AssemblyItem item(Instruction::JUMP);

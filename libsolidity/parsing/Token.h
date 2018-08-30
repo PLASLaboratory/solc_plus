@@ -178,6 +178,9 @@ namespace solidity
 	K(CallData, "calldata", 0)                                         \
 	K(Struct, "struct", 0)                                             \
 	K(Throw, "throw", 0)                                               \
+	\
+	/* Eun-Sun Cho 2018.8.30 */                                        \
+	K(NonFallBack, "NonFallBack", 0)                                   \
 	K(Using, "using", 0)                                               \
 	K(Var, "var", 0)                                                   \
 	K(View, "view", 0)                                                 \

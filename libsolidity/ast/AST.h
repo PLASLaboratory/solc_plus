@@ -1243,6 +1243,20 @@ public:
 };
 
 /**
+ * @brief The NonFallBack statement sets starting point of non fall back mode;
+ * Eun-Sun Cho 2018.8.30
+ */
+class NonFallBack: public Statement
+{
+public:
+	explicit NonFallBack(SourceLocation const& _location, ASTPointer<ASTString> const& _docString):
+		Statement(_location, _docString) {}
+	virtual void accept(ASTVisitor& _visitor) override;
+	virtual void accept(ASTConstVisitor& _visitor) const override;
+};
+
+
+/**
  * The emit statement is used to emit events: emit EventName(arg1, ..., argn)
  */
 class EmitStatement: public Statement

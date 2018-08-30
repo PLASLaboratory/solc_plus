@@ -91,6 +91,7 @@ public:
 	bool visit(Break const& _node) override;
 	bool visit(Return const& _node) override;
 	bool visit(Throw const& _node) override;
+	bool visit(NonFallBack const& _node) override; /* Eun-Sun Cho 2018.8.30 */
 	bool visit(EmitStatement const& _node) override;
 	bool visit(VariableDeclarationStatement const& _node) override;
 	bool visit(ExpressionStatement const& _node) override;

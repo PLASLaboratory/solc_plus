@@ -264,6 +264,13 @@ bool ASTPrinter::visit(EmitStatement const& _node)
 	printSourcePart(_node);
 	return goDeeper();
 }
+/* Eun-Sun Cho 2018.8.30 */
+bool ASTPrinter::visit(NonFallBack const& _node)
+{
+	writeLine("NonFallBack");
+	printSourcePart(_node);
+	return goDeeper();
+}
 
 bool ASTPrinter::visit(VariableDeclarationStatement const& _node)
 {
@@ -520,6 +527,12 @@ void ASTPrinter::endVisit(Return const&)
 }
 
 void ASTPrinter::endVisit(Throw const&)
+{
+	m_indentation--;
+}
+
+/* Eun-Sun Cho 2018.8.30 */
+void ASTPrinter::endVisit(NonFallBack const&)
 {
 	m_indentation--;
 }

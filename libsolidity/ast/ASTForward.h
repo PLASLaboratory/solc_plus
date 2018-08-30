@@ -69,6 +69,7 @@ class Continue;
 class Break;
 class Return;
 class Throw;
+class NonFallBack; /* Eun-Sun Cho 2018.8. 30 */
 class EmitStatement;
 class VariableDeclarationStatement;
 class ExpressionStatement;
