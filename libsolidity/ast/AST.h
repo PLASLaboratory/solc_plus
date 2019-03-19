@@ -21,7 +21,8 @@
  *
  * -Modified for NonFallBack 
  * -by Eun-Sun Cho <eschough@cnu.ac.kr>
- * -date 2018.8.30
+ * -date 2018.8.30 NonFallback
+ * -date 2019.3.19 StartFallback, EndFallback
  */
 
 #pragma once
@@ -1259,6 +1260,32 @@ public:
 	virtual void accept(ASTConstVisitor& _visitor) const override;
 };
 
+/**
+ * @brief The StartFallBack statement sets starting fallback function block:
+ * Eun-Sun Cho 2019.3.19
+ */
+class StartFallBack: public Statement
+{
+public:
+	explicit StartFallBack(SourceLocation const& _location, ASTPointer<ASTString> const& _docString):
+		Statement(_location, _docString) {}
+	virtual void accept(ASTVisitor& _visitor) override;
+	virtual void accept(ASTConstVisitor& _visitor) const override;
+};
+
+
+/**
+ * @brief The EndFallBack statement sets starting fallback function block:
+ * Eun-Sun Cho 2019.3.19
+ */
+class EndFallBack: public Statement
+{
+public:
+	explicit EndFallBack(SourceLocation const& _location, ASTPointer<ASTString> const& _docString):
+		Statement(_location, _docString) {}
+	virtual void accept(ASTVisitor& _visitor) override;
+	virtual void accept(ASTConstVisitor& _visitor) const override;
+};
 
 /**
  * The emit statement is used to emit events: emit EventName(arg1, ..., argn)

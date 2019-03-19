@@ -21,7 +21,8 @@
  *
  * -Modified for NonFallBack 
  * -by Eun-Sun Cho <eschough@cnu.ac.kr>
- * -date 2018.8.30
+ * -date 2018.8.30 NonFallback
+ * -date 2019.3.19 StartFallback, EndFallback
  */
 
 #pragma once
@@ -73,7 +74,9 @@ class Continue;
 class Break;
 class Return;
 class Throw;
-class NonFallBack; /* Eun-Sun Cho 2018.8. 30 */
+class NonFallBack;   /* Eun-Sun Cho 2018.8. 30 */
+class StartFallBack; /* Eun-Sun Cho 2019.3. 19 */
+class EndFallBack;   /* Eun-Sun Cho 2019.3. 19 */
 class EmitStatement;
 class VariableDeclarationStatement;
 class ExpressionStatement;

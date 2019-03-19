@@ -348,7 +348,7 @@ Parser::FunctionHeaderParserResult Parser::parseFunctionHeader(bool _forceEmptyN
 	FunctionHeaderParserResult result;
 
 	result.isConstructor = false;
-	result.isFallBack = false; 	/* Eun-Sun Cho 2019.3.18 */
+	result.isFallback = false; 	/* Eun-Sun Cho 2019.3.18 */
 
 	if (m_scanner->currentToken() == Token::Constructor)
 		result.isConstructor = true;
@@ -469,8 +469,10 @@ ASTPointer<ASTNode> Parser::parseFunctionDefinitionOrFunctionTypeStateVariable()
 		nodeFactory.markEndPosition();
 		if (m_scanner->currentToken() != Token::Semicolon)
 		{
-			if (header.isFallback == true) 			/* Eun-Sun Cho 2019.3.18 */
-				block = parseFallbackBlock(block); 	/* Eun-Sun Cho 2019.3.18 */
+			/* Eun-Sun Cho 2019.3.18 			*/
+			/* if isFallback, different ParseBlock will be called*/
+			if (header.isFallback == true) 			
+				block = parseFallbackBlock(); 	
 			else 
 				block = parseBlock();
 			nodeFactory.setEndPositionFromNode(block);
@@ -520,14 +522,14 @@ ASTPointer<Block> Parser::parseFallbackBlock(ASTPointer<ASTString> const& _docSt
 	ASTPointer<Statement> endFallback;
 
 	// 2019.3.19 start fallback Eun-Sun Cho
-	startFallback = ASTNodeFactory(*this).createNode<StartFallBack>("START_FALLBACK");
+	startFallback = ASTNodeFactory(*this).createNode<StartFallBack>(make_shared<ASTString>("STARTFALLBACK"));
 	statements.push_back(startFallback);
 
 	while (m_scanner->currentToken() != Token::RBrace)
 		statements.push_back(parseStatement());
 
 	// 2019.3.19 end fallback Eun-Sun Cho
-	endFallback = ASTNodeFactory(*this).createNode<EndFallBack>("END_FALLBACK");
+	endFallback = ASTNodeFactory(*this).createNode<EndFallBack>(make_shared<ASTString>("ENDFALLBACK"));
 	statements.push_back(endFallback);
 
 	nodeFactory.markEndPosition();

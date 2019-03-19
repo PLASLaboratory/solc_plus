@@ -21,7 +21,8 @@
  *
  * -Modified for NonFallBack 
  * -by Eun-Sun Cho <eschough@cnu.ac.kr>
- * -date 2018.8.30
+ * -date 2018.8.30 for NonFallback
+ * -date 2019.3.19 for StartFallback, EndFallback
  */
 
 #include <libsolidity/codegen/CompilerContext.h>
@@ -269,6 +270,16 @@ CompilerContext& CompilerContext::appendSetNonFallBack()
 //	eth::AssemblyItem item(Instruction::SETNONFALLBACK);
 //	return *this << item;
 	return *this << Instruction::SETNONFALLBACK;
+}
+/*Eun-Sun Cho 2019.3.19 */
+CompilerContext& CompilerContext::appendStartFallBack()
+{
+	return *this << Instruction::STARTFALLBACK;
+}
+/*Eun-Sun Cho 2019.3.19 */
+CompilerContext& CompilerContext::appendEndFallBack()
+{
+	return *this << Instruction::ENDFALLBACK;
 }
 
 CompilerContext& CompilerContext::appendJump(eth::AssemblyItem::JumpType _jumpType)

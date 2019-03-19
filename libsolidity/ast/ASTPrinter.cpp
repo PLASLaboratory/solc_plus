@@ -21,7 +21,8 @@
  *
  * -Modified for NonFallBack 
  * -by Eun-Sun Cho <eschough@cnu.ac.kr>
- * -date 2018.8.30
+ * -date 2018.8.30 for NonFallback
+ * -date 2019.3.19 for StartFallback, EndFallback
  */
 
 
@@ -269,10 +270,27 @@ bool ASTPrinter::visit(EmitStatement const& _node)
 	printSourcePart(_node);
 	return goDeeper();
 }
+
 /* Eun-Sun Cho 2018.8.30 */
 bool ASTPrinter::visit(NonFallBack const& _node)
 {
 	writeLine("NonFallBack");
+	printSourcePart(_node);
+	return goDeeper();
+}
+
+/* Eun-Sun Cho 2019.3.19 */
+bool ASTPrinter::visit(StartFallBack const& _node)
+{
+	writeLine("StartFallBack");
+	printSourcePart(_node);
+	return goDeeper();
+}
+
+/* Eun-Sun Cho 2019.3.19 */
+bool ASTPrinter::visit(EndFallBack const& _node)
+{
+	writeLine("EndFallBack");
 	printSourcePart(_node);
 	return goDeeper();
 }
@@ -538,6 +556,18 @@ void ASTPrinter::endVisit(Throw const&)
 
 /* Eun-Sun Cho 2018.8.30 */
 void ASTPrinter::endVisit(NonFallBack const&)
+{
+	m_indentation--;
+}
+
+/* Eun-Sun Cho 2019.3.19 */
+void ASTPrinter::endVisit(StartFallBack const&)
+{
+	m_indentation--;
+}
+
+/* Eun-Sun Cho 2019.3.19 */
+void ASTPrinter::endVisit(EndFallBack const&)
 {
 	m_indentation--;
 }

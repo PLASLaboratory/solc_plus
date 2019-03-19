@@ -20,7 +20,8 @@
  *
  * -Modified for NonFallBack 
  * -by Eun-Sun Cho <eschough@cnu.ac.kr>
- * -date 2018.8.30
+ * -date 2018.8.30 for NonFallback
+ * -date 2019.3.19 for StartFallback, EndFallback
  */
 
 #include <libsolidity/ast/ASTJsonConverter.h>
@@ -547,6 +548,20 @@ bool ASTJsonConverter::visit(Throw const& _node)
 bool ASTJsonConverter::visit(NonFallBack const& _node)
 {
 	setJsonNode(_node, "NonFallBack", {});
+	return false;
+}
+
+/* Eun-Sun Cho 2019.3.19 */
+bool ASTJsonConverter::visit(StartFallBack const& _node)
+{
+	setJsonNode(_node, "StartFallBack", {});
+	return false;
+}
+
+/* Eun-Sun Cho 2019.3.19 */
+bool ASTJsonConverter::visit(EndFallBack const& _node)
+{
+	setJsonNode(_node, "EndFallBack", {});
 	return false;
 }
 
