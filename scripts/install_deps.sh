@@ -320,12 +320,15 @@ case $(uname -s) in
                 esac
 
                 sudo apt-get -y update
-                sudo apt-get -y install \
-                    build-essential \
-                    cmake \
-                    git \
-                    libboost-all-dev \
-                    "$install_z3"
+                sudo apt-get -y install build-essential
+                sudo apt-get -y install cmake
+                sudo apt-get -y install libboost-all-dev
+#               sudo apt-get -y install "$install_z3"
+                    #build-essential \
+                    #cmake \
+                    #git \
+                    #libboost-all-dev \
+                    #"$install_z3"
                 if [ "$CI" = true ]; then
                     # install Z3 from PPA if the distribution does not provide it
                     if ! dpkg -l libz3-dev > /dev/null 2>&1
@@ -335,11 +338,16 @@ case $(uname -s) in
                         sudo apt-get -y install libz3-dev
                     fi
 
+			echo "[EUN Start install ppa ethereum]"
+
                     # Install 'eth', for use in the Solidity Tests-over-IPC.
                     # We will not use this 'eth', but its dependencies
                     sudo add-apt-repository -y ppa:ethereum/ethereum
+			echo "[EUN Start install ppa ethereum dev]"
                     sudo add-apt-repository -y ppa:ethereum/ethereum-dev
+			echo "[EUN Start install ppa ethereum update]"
                     sudo apt-get -y update
+			echo "[EUN Start install eth ]"
                     sudo apt-get -y install eth
                 fi
                 ;;

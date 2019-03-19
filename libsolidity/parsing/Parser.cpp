@@ -22,6 +22,7 @@
  * -Modified for NonFallBack 
  * -by Eun-Sun Cho <eschough@cnu.ac.kr>
  * -date 2018.8.30
+ * -date 2019.3.18
  */
 
 #include <ctype.h>
@@ -347,6 +348,7 @@ Parser::FunctionHeaderParserResult Parser::parseFunctionHeader(bool _forceEmptyN
 	FunctionHeaderParserResult result;
 
 	result.isConstructor = false;
+	result.isFallBack = false; 	/* Eun-Sun Cho 2019.3.18 */
 
 	if (m_scanner->currentToken() == Token::Constructor)
 		result.isConstructor = true;
@@ -357,7 +359,14 @@ Parser::FunctionHeaderParserResult Parser::parseFunctionHeader(bool _forceEmptyN
 	if (result.isConstructor)
 		result.name = make_shared<ASTString>();
 	else if (_forceEmptyName || m_scanner->currentToken() == Token::LParen)
+	{
 		result.name = make_shared<ASTString>();
+
+		/* Eun-Sun Cho 2019.3.18 */
+		/* It should a fallback function 	*/
+		/* Not a constructor but without a name! */
+		result.isFallback =  true;
+	}
 	else if (m_scanner->currentToken() == Token::Constructor)
 		fatalParserError(string(
 			"This function is named \"constructor\" but is not the constructor of the contract. "
@@ -460,7 +469,10 @@ ASTPointer<ASTNode> Parser::parseFunctionDefinitionOrFunctionTypeStateVariable()
 		nodeFactory.markEndPosition();
 		if (m_scanner->currentToken() != Token::Semicolon)
 		{
-			block = parseBlock();
+			if (header.isFallback == true) 			/* Eun-Sun Cho 2019.3.18 */
+				block = parseFallbackBlock(block); 	/* Eun-Sun Cho 2019.3.18 */
+			else 
+				block = parseBlock();
 			nodeFactory.setEndPositionFromNode(block);
 		}
 		else
@@ -494,6 +506,33 @@ ASTPointer<ASTNode> Parser::parseFunctionDefinitionOrFunctionTypeStateVariable()
 		expectToken(Token::Semicolon);
 		return node;
 	}
+}
+
+/* Eun-Sun Cho 2019.3.19 */
+/* The same as parseBlock, except two stamenets- startFallback, endFallback */
+ASTPointer<Block> Parser::parseFallbackBlock(ASTPointer<ASTString> const& _docString)
+{
+	RecursionGuard recursionGuard(*this);
+	ASTNodeFactory nodeFactory(*this);
+	expectToken(Token::LBrace);
+	vector<ASTPointer<Statement>> statements;
+	ASTPointer<Statement> startFallback;
+	ASTPointer<Statement> endFallback;
+
+	// 2019.3.19 start fallback Eun-Sun Cho
+	startFallback = ASTNodeFactory(*this).createNode<StartFallBack>("START_FALLBACK");
+	statements.push_back(startFallback);
+
+	while (m_scanner->currentToken() != Token::RBrace)
+		statements.push_back(parseStatement());
+
+	// 2019.3.19 end fallback Eun-Sun Cho
+	endFallback = ASTNodeFactory(*this).createNode<EndFallBack>("END_FALLBACK");
+	statements.push_back(endFallback);
+
+	nodeFactory.markEndPosition();
+	expectToken(Token::RBrace);
+	return nodeFactory.createNode<Block>(_docString, statements);
 }
 
 ASTPointer<StructDefinition> Parser::parseStructDefinition()
