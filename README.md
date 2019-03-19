@@ -73,4 +73,4 @@ Modified C/C++ source files of Solidity repository are;
 
 
 
-For more details, please contact us.
+For more details, please contact us. (fcmonoid@gmail.com)
