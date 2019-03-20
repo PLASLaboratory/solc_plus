@@ -23,6 +23,7 @@
  * -by Eun-Sun Cho <eschough@cnu.ac.kr>
  * -date 2018.8.30 NonFallback
  * -date 2019.3.19 StartFallback, EndFallback
+ * -date 2019.3.20 for Change NonFallback ->  NonFallbackOn, Add  NonFallbackOff
  */
 
 #pragma once
@@ -74,7 +75,8 @@ class Continue;
 class Break;
 class Return;
 class Throw;
-class NonFallBack;   /* Eun-Sun Cho 2018.8. 30 */
+class NonFallBackOn;   /* Eun-Sun Cho 2018.8. 30, 2019.3.20 */
+class NonFallBackOff;   /* Eun-Sun Cho 2019.3. 20 */
 class StartFallBack; /* Eun-Sun Cho 2019.3. 19 */
 class EndFallBack;   /* Eun-Sun Cho 2019.3. 19 */
 class EmitStatement;

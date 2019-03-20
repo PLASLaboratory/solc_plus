@@ -23,6 +23,7 @@
  * -by Eun-Sun Cho <eschough@cnu.ac.kr>
  * -date 2018.8.30
  * -date 2019.3.18
+ * -date 2019.3.20 for Change NonFallback ->  NonFallbackOn, Add  NonFallbackOff
  */
 
 #include <ctype.h>
@@ -987,10 +988,17 @@ ASTPointer<Statement> Parser::parseStatement()
 		m_scanner->next();
 		break;
 	}
-/* Eun-Sun Cho 2018.8.30 */
-	case Token::NonFallBack:
+/* Eun-Sun Cho 2018.8.30, 2019.3.20 */
+	case Token::NonFallBackOn:
 	{
-		statement = ASTNodeFactory(*this).createNode<NonFallBack>(docString);
+		statement = ASTNodeFactory(*this).createNode<NonFallBackOn>(docString);
+		m_scanner->next();
+		break;
+	}
+/* Eun-Sun Cho 2019.3.20 */
+	case Token::NonFallBackOff:
+	{
+		statement = ASTNodeFactory(*this).createNode<NonFallBackOff>(docString);
 		m_scanner->next();
 		break;
 	}

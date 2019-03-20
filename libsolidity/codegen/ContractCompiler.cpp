@@ -23,6 +23,7 @@
  * -by Eun-Sun Cho <eschough@cnu.ac.kr>
  * -date 2018.8.30 for NonFallback
  * -date 2019.3.19 for StartFallback, EndFallback
+ * -date 2019.3.20 for Change NonFallback ->  NonFallbackOn, Add  NonFallbackOff
  */
 
 #include <libsolidity/codegen/ContractCompiler.h>
@@ -790,10 +791,18 @@ bool ContractCompiler::visit(Throw const&)
 	return false;
 }
 
-/* Eun-Sun Cho 2018.8.30 */
-bool ContractCompiler::visit(NonFallBack const&)
+/* Eun-Sun Cho 2018.8.30, 2019.3.20 */
+bool ContractCompiler::visit(NonFallBackOn const&)
 {
-	m_context.appendSetNonFallBack();
+	m_context.appendNonFallBackOn();
+
+	return false;
+}
+
+/* Eun-Sun Cho 2019.3.20 */
+bool ContractCompiler::visit(NonFallBackOff const&)
+{
+	m_context.appendNonFallBackOff();
 
 	return false;
 }

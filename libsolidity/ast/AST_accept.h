@@ -23,7 +23,8 @@
  * -Modified for NonFallBack 
  * -by Eun-Sun Cho <eschough@cnu.ac.kr>
  * -date 2018.8.30 for NonFallback
- * -date 2019.3.19 for inFallBack
+ * -date 2019.3.19 for inFallBack body
+ * -date 2019.3.20 for Change NonFallback ->  NonFallbackOn, Add  NonFallbackOff
  */
 
 #pragma once
@@ -551,8 +552,15 @@ void Throw::accept(ASTConstVisitor& _visitor) const
 	_visitor.endVisit(*this);
 }
 
-/*Eun-Sun Cho 2018.8.30 */
-void NonFallBack::accept(ASTVisitor& _visitor)
+/*Eun-Sun Cho 2019.3.20 */
+void NonFallBackOn::accept(ASTVisitor& _visitor)
+{
+	_visitor.visit(*this);
+	_visitor.endVisit(*this);
+}
+
+/*Eun-Sun Cho 2019.3.20 */
+void NonFallBackOff::accept(ASTVisitor& _visitor)
 {
 	_visitor.visit(*this);
 	_visitor.endVisit(*this);
@@ -573,7 +581,14 @@ void EndFallBack::accept(ASTVisitor& _visitor)
 
 
 /*Eun-Sun Cho 2018.8.30 */
-void NonFallBack::accept(ASTConstVisitor& _visitor) const
+void NonFallBackOn::accept(ASTConstVisitor& _visitor) const
+{
+	_visitor.visit(*this);
+	_visitor.endVisit(*this);
+}
+
+/*Eun-Sun Cho 2019.3.20 */
+void NonFallBackOff::accept(ASTConstVisitor& _visitor) const
 {
 	_visitor.visit(*this);
 	_visitor.endVisit(*this);

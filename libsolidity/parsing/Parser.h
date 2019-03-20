@@ -18,6 +18,8 @@
  * @author Christian <c@ethdev.com>
  * @date 2014
  * Solidity parser.
+ * Updated by Eun-Sun Cho
+ * for Start Fallback body, End Fallback Body 2019.3.19 
  */
 
 #pragma once

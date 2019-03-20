@@ -21,7 +21,8 @@
  * -Modified for NonFallBack 
  * -by Eun-Sun Cho <eschough@cnu.ac.kr>
  * -date 2018.8.30 for NonFallback
- * -date 2019.3.19 for StartFallback,EndFallback
+ * -date 2019.3.19 for StartFallback(0x27), EndFallback(0x28)
+ * -date 2019.3.20 for Change NonFallback to NonFallbackOn,(0x25) Add NonFallbackOff(0x26)
  */
 
 #pragma once
@@ -72,9 +73,10 @@ enum class Instruction: uint8_t
 
 	KECCAK256 = 0x20,		///< compute KECCAK-256 hash
 	
-	SETNONFALLBACK = 0x25,		///< starting nonfallback mode > /*Eun-Sun Cho 2018.8.30*/
-	STARTFALLBACK = 0x26,		///< starting fallback function block> /*Eun-Sun Cho 2019.3.19 */
-	ENDFALLBACK = 0x27,		///< ending fallback function block > /*Eun-Sun Cho 2019.3.19 */
+	NONFALLBACKON = 0x25,		///< starting nonfallback mode > /*Eun-Sun Cho 2018.8.30*/
+	NONFALLBACKOFF = 0x26,		///< ending nonfallback mode > /*Eun-Sun Cho 2019.3.20*/
+	STARTFALLBACK = 0x27,		///< starting fallback function block> /*Eun-Sun Cho 2019.3.19 */
+	ENDFALLBACK = 0x28,		///< ending fallback function block > /*Eun-Sun Cho 2019.3.19 */
 
 	ADDRESS = 0x30,		///< get address of currently executing account
 	BALANCE,			///< get balance of the given account

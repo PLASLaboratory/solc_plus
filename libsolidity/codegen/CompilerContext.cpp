@@ -23,6 +23,7 @@
  * -by Eun-Sun Cho <eschough@cnu.ac.kr>
  * -date 2018.8.30 for NonFallback
  * -date 2019.3.19 for StartFallback, EndFallback
+ * -date 2019.3.20 for Change NonFallback ->  NonFallbackOn, Add  NonFallbackOff
  */
 
 #include <libsolidity/codegen/CompilerContext.h>
@@ -264,12 +265,15 @@ pair<u256, unsigned> CompilerContext::storageLocationOfVariable(const Declaratio
 	return it->second;
 }
 
-/*Eun-Sun Cho 2018.8.30 */
-CompilerContext& CompilerContext::appendSetNonFallBack()
+/*Eun-Sun Cho 2018.8.30, 2019.3.20 */
+CompilerContext& CompilerContext::appendNonFallBackOn()
 {
-//	eth::AssemblyItem item(Instruction::SETNONFALLBACK);
-//	return *this << item;
-	return *this << Instruction::SETNONFALLBACK;
+	return *this << Instruction::NONFALLBACKON;
+}
+/*Eun-Sun Cho 2019.3.20 */
+CompilerContext& CompilerContext::appendNonFallBackOff()
+{
+	return *this << Instruction::NONFALLBACKOFF;
 }
 /*Eun-Sun Cho 2019.3.19 */
 CompilerContext& CompilerContext::appendStartFallBack()
